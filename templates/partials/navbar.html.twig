@@ -1,11 +1,23 @@
-<nav class="nav">
-    <ul>
-        <li>
-            <a href="{{ path("app_main") }}">
-                <img src="{{ asset("assets/logo-blanc.png") }}" alt="Logo Bucket list">
-            </a>
-        </li>
-        <li class="crumb"><a href="{{ path("app_wish_list") }}">Liste des voeux</a></li>
-        <li class="crumb"><a href="{{ path("app_about_us") }}">A propos</a></li>
-    </ul>
+<nav class="topnav">
+
+    <a href="{{ path("app_main") }}">
+        <img src="{{ asset("assets/logo-blanc.png") }}" alt="Logo Bucket list">
+    </a>
+
+    {% if is_granted('ROLE_USER') %}
+        <a href="{{ path("app_wish_list") }}">Liste des voeux</a>
+        <a href="{{ path("app_wish_create") }}">Ajouter un voeu</a>
+        <a href="{{ path("app_category_list") }}">Liste des catégories</a>
+    {% endif %}
+
+    <div class="topnav-right">
+
+        {% if app.user %}
+            <a href="{{ path("app_logout") }}">Se déconnecter</a>
+        {% else %}
+            <a href="{{ path("app_login") }}">Se connecter</a>
+            <a href="{{ path("app_register") }}">S'inscrire</a>
+        {% endif %}
+    </div>
+
 </nav>

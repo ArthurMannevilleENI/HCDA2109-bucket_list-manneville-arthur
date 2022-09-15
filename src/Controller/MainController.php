@@ -3,14 +3,19 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
     #[Route('/', name: 'app_main')]
-    public function home(): Response
+    public function home(Request $request): Response
     {
+        $successLogin = $request->get('success_login');
+
+        if ($successLogin) { $this->addFlash('success', "Hello " . $this->getUser()->getUsername()); }
+
         return $this->render('home.html.twig', [
             'controller_name' => 'MainController',
         ]);

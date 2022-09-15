@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="serie-details">
+        <h1>Ajouter un voeu:</h1>
+
+        {{ form_start(wishForm) }}
+
+            <div class="divForm">
+                {{ form_label(wishForm.title) }}
+                {{ form_widget(wishForm.title) }}
+            </div>
+
+            <div class="divForm">
+                {{ form_label(wishForm.description) }}
+                {{ form_widget(wishForm.description) }}
+            </div>
+
+            <div class="divForm">
+                {{ form_label(wishForm.author) }}
+                {{ form_widget(wishForm.author) }}
+            </div>
+
+            <div class="divFormIsPublished">
+                {{ form_label(wishForm.isPublished) }}
+                {{ form_widget(wishForm.isPublished) }}
+            </div>
+
+            <div class="divForm">
+                {{ form_label(wishForm.category) }}
+                {{ form_widget(wishForm.category) }}
+            </div>
+
+            {{ form_row(wishForm.save) }}
+
+        {{ form_end(wishForm) }}
+    </div>
+{% endblock %}

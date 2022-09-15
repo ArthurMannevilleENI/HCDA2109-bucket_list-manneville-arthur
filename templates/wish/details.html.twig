@@ -2,10 +2,13 @@
 
 {% block body %}
 
+    {% include 'partials/flashMessage.html.twig' %}
+
     <div class="serie-details">
         <h1>Details du voeu {{ wish.title }}:</h1>
 
         <p class="serie-detail">Description du voeu: {{ wish.description }}</p>
+        <p class="serie-detail">Catégorie: {{ wish.category.name }}</p>
         <p class="serie-detail">Crée par: {{ wish.author }} le {{ wish.dateCreated | date("d/m/Y") }}</p>
     </div>
 {% endblock %}

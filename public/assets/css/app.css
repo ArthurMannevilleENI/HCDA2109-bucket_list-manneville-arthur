@@ -11,6 +11,19 @@
     font-family: 'Allan', cursive;
 }
 
+body {
+    min-height: 100vh;
+    margin: 0;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+#homeTitle {
+    text-align: center;
+    margin: auto;
+}
+
 .container {
     max-width: 1000px;
     margin: auto;
@@ -65,19 +78,43 @@ main {
     flex: 1;
 }
 
-nav ul {
+/************************************************************************/
+
+.topnav {
+    background-color: #333;
+    overflow: auto;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 17px;
+    height: 40px;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-nav li {
-    margin: 10px;
+.topnav a img {
     height: 40px;
-    line-height: 40px;
 }
 
-nav ul li a img {
-    height: 40px;
+.topnav a:hover {
+    color: #BC956B;
 }
+
+.topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.topnav-right {
+    float: right;
+}
+/************************************************************************/
 
 #legalStuffDiv, #legalStuffEdition, #legalStuffHosting, #legalStuffPublicationDirector, #legalStuffContactUs{
     padding: 30px 0;
@@ -96,6 +133,7 @@ nav ul li a img {
 footer {
     justify-content: center;
     text-align: center;
+    min-height:50px;
 }
 
 footer hr {
@@ -153,23 +191,51 @@ footer p {
 }
 
 /*********************** Module 6 Form ******************************/
-/*
-label {
-    display: block;
+
+.divForm {
+    margin: 15px 40%;
 }
 
-input,
-textarea,
-select {
-    margin-bottom: 1rem;
-    box-sizing: border-box;
-    width: 150px;
-    max-width: 50%;
+.divForm label {
+    text-align: start;
+    display: block;
+    margin: 0 15px 5px 0;
+    width: 100%;
 }
-*/
+
+.divForm input, .divForm textarea, .divForm select {
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+    padding: 2px 0;
+}
+
+.divFormIsPublished {
+    width: 20%;
+    display: inline-flex;
+}
+
+.divFormIsPublished div {
+    display: inline-flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+}
+
+.formSubmit {
+    padding: 5px 10px;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.navbarItemsToRight {
+    border: 1px solid pink;
+    float: right;
+}
 /************************** Module 7 Relations *****************************************/
 
-/*
 .seasons article {
     display: flex;
     margin-bottom: 1rem;
@@ -191,5 +257,19 @@ select {
 .flash-success {background-color: lawngreen}
 .flash-error {background-color: red}
 
+/********************************* OTHERS ********************************************/
 
-*/
+.changeBackgroundDropdown {
+    background-color: #132135;
+}
+
+.error_div {
+    height: 800px;
+    display: flex;
+    margin: auto;
+}
+
+.error_title {
+    margin: auto;
+    text-align: center;
+}

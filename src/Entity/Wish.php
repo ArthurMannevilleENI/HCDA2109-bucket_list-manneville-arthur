@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\WishRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: WishRepository::class)]
 class Wish
@@ -15,19 +16,39 @@ class Wish
     private ?int $id = null;
 
     #[ORM\Column(length: 250)]
-    private ?string $title = null;
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: "Le titre du voeu ne peut pas faire plus de 250 caractères",
+    )]
+    private string $title;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $description = null;
+    #[Assert\Length(
+        max: 255,
+        maxMessage: "Le titre du voeu ne peut pas faire plus de 255 caractères",
+    )]
+    private ?string $description;
 
     #[ORM\Column(length: 50)]
-    private ?string $author = null;
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: "Le nom de l'auteur ne peut pas faire plus de 50 caractères",
+    )]
+    private string $author;
 
     #[ORM\Column]
-    private ?bool $isPublished = null;
+    #[Assert\NotNull]
+    private bool $isPublished;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $dateCreated = null;
+    #[Assert\DateTime]
+    private \DateTimeInterface $dateCreated;
+
+    #[ORM\ManyToOne(inversedBy: 'wishes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
@@ -70,7 +91,7 @@ class Wish
         return $this;
     }
 
-    public function isIsPublished(): ?bool
+    public function IsPublished(): ?bool
     {
         return $this->isPublished;
     }
@@ -90,6 +111,18 @@ class Wish
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
         $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

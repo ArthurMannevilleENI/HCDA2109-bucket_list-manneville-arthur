@@ -4,6 +4,9 @@
 
     {% include 'partials/flashMessage.html.twig' %}
 
-    <h1 id="homeTitle">Bienvenue sur Bucket-List</h1>
+    <div class="serie-details">
+        <h1>Ajouter une catégorie:</h1>
 
+        {{ form(categoryForm) }}
+    </div>
 {% endblock %}

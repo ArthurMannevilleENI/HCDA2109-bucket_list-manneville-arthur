@@ -3,12 +3,16 @@
 {% block body %}
 
     <div class="container">
+
+        {% include 'partials/flashMessage.html.twig' %}
+
         <h1>Liste des voeux :</h1>
 
         <ul class="series-list">
             {% for wish in wishes %}
                 <li class="serie">
                     <p class="serie-title">{{ wish.title }}</p>
+                    <p class="serie-title" style="border: 1px solid red">{{ wish.category.name }}</p>
                     <a class="serie-see-more" href="{{ path("app_wish_details", {"wishId": wish.id }) }}">Plus d'infos</a>
                 </li>
             {% endfor %}
